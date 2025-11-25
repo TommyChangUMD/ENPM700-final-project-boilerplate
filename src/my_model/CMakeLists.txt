@@ -4,8 +4,8 @@ project(my_model)
 #This package allows us to write config files that can be relocated, paths are not hard-coded.
 include ( CMakePackageConfigHelpers )
 
-# GoogleTest requires at least C++14
-set(CMAKE_CXX_STANDARD 14)
+# GoogleTest requires at least C++14, we need at least C++17 for the ROScpp library
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 ###################################################
@@ -133,15 +133,15 @@ add_library (my_model
 
 # Specify where the associated include files are
 target_include_directories (my_model PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>  
-    $<INSTALL_INTERFACE:include> 
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
     PUBLIC ${OpenCV_INCLUDE_DIRS}
     PUBLIC ${rclcpp_INCLUDE_DIRS}
-    ) 
+    )
 
 # Specify where the associated libraries are
 # Any dependent libraires needed to build this target.
-target_link_libraries(my_model
+target_link_libraries (my_model
   # list of libraries
   ${OpenCV_LIBRARIES}
   ${rclcpp_LIBRARIES}
@@ -160,10 +160,10 @@ install (TARGETS
   )
 
 # Install the header files
-install(FILES
+install (FILES
   include/my_dummy_lib_funct1.hpp
   include/my_dummy_lib_funct2.hpp
-  DESTINATION include 
+  DESTINATION include
   )
 
 ###################################
@@ -176,11 +176,11 @@ export (TARGETS
   FILE my_model-config.cmake)   # must by <PACKAGE>-config.cmake
 
 # Export the build tree to the package registry (~/.cmake/packages/<packag>/)
-set(CMAKE_EXPORT_PACKAGE_REGISTRY ON)
-export(PACKAGE my_model)
+set (CMAKE_EXPORT_PACKAGE_REGISTRY ON)
+export (PACKAGE my_model)
 
 # Install the export group
-install(EXPORT my_model-export
+install (EXPORT my_model-export
   DESTINATION share/${PROJECT_NAME}/cmake/
   )
 
@@ -188,4 +188,4 @@ install(EXPORT my_model-export
 ###################################
 # Sub-Modules
 ###################################
-add_subdirectory(test)
+add_subdirectory (test)

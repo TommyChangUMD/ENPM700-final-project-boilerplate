@@ -25,10 +25,10 @@ This repo provides a template for setting up:
   - ROS2 launch file
   - Bash scripts that can be invoked by the `ros2 run ...` command
 
-This software uses the **Model-View-Controller** architecture. 
+This software uses the **Model-View-Controller** architecture.
   - **Model** = `my_model` module (see [src/my_model/README.md](src/my_model/README.md))
   - **Controler** = `my_controller` module  (see [src/my_controller/README.md](src/my_controller/README.md))
-  - **View** = Gazebo
+  - **View** = Gazebo / Webots
 
 ## How to generate module / package dependency graph
 
@@ -37,7 +37,7 @@ colcon graph --dot | dot -Tpng -o depGraph.png
 open depGraph.png
 ```
 [<img src=screenshots/depGraph.png
-    width="20%" 
+    width="20%"
     style="display: block; margin: 0 auto"
     />](screenshots/depGraph.png)
 
@@ -52,8 +52,8 @@ $ sudo apt install ros-${ROS_DISTRO}-catch-ros2
 ```
 Now, we can build our system:
 ```bash
-rm -rf build/ install/
-colcon build 
+rm -rf build/ install/ ~/.cmake/packages/my_model/
+VERBOSE=1 colcon build --event-handlers console_cohesion+
 
 ```
 And finally, run the demo:
@@ -97,8 +97,8 @@ example output:
 We want to run tests with code coverage.  Therefore, we need to enable the code coverage option.
 
 ```bash
-rm -rf build/ install/
-colcon build --cmake-args -DCOVERAGE=1 
+rm -rf build/ install/ ~/.cmake/packages/my_model/
+VERBOSE=1 colcon build --event-handlers console_cohesion+ --cmake-args -DCOVERAGE=1
 ```
 
 ## How to run tests (unit and integration)
@@ -152,4 +152,3 @@ There is already a `.github/workflows/run-unit-test-and-upload-codecov.yml` file
 Follow the similar instruction provided in the cpp-boilerplate-v2 repo:
 
   https://github.com/TommyChangUMD/cpp-boilerplate-v2?tab=readme-ov-file#how-to-use-github-ci-to-upload-coverage-report-to-codecov
-  
