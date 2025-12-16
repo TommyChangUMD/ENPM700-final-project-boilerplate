@@ -2,7 +2,11 @@
 
 DRAFT - DRAFT - DRAFT
 
-![CICD Workflow status](https://github.com/TommyChangUMD/ENPM700-final-project-boilerplate/actions/workflows/run-unit-test-and-upload-codecov.yml/badge.svg) [![codecov](https://codecov.io/gh/TommyChangUMD/ENPM700-final-project-boilerplate/branch/main/graph/badge.svg)](https://codecov.io/gh/TommyChangUMD/ENPM700-final-project-boilerplate) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![CICD Workflow status](https://github.com/TommyChangUMD/ENPM700-final-project-boilerplate/actions/workflows/run-unit-test-and-upload-codecov.yml/badge.svg)](https://github.com/TommyChangUMD/ENPM700-final-project-boilerplate/actions/workflows/run-unit-test-and-upload-codecov.yml)
+
+[![codecov](https://codecov.io/gh/TommyChangUMD/ENPM700-final-project-boilerplate/branch/main/graph/badge.svg)](https://codecov.io/gh/TommyChangUMD/ENPM700-final-project-boilerplate)
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 This repo provides a template for setting up:
 
